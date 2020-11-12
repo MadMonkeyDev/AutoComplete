@@ -100,16 +100,18 @@ namespace Server
         public void MessageProcessing(Socket CurrentSocket, string Message)
         {
             string[] ArrayOfMessage = Message.Split(' ');
+
+            string Responce = "resp:";
+
             switch (ArrayOfMessage[0])
             {
                 // обработка комманды get <префикс>. Возвращает слова по указанному префиксу.
                 case "get":
-                    CurrentSocket.Send(_Encoder.GetBytes(SQLiteDB.Instance.GetWords(ArrayOfMessage[1])));
-                    break;
-                default:
-                    CurrentSocket.Send(_Encoder.GetBytes(""));
+                    Responce += SQLiteDB.Instance.GetWords(ArrayOfMessage[1]);
                     break;
             }
+
+            CurrentSocket.Send(_Encoder.GetBytes(Responce));
         }
 
         /// <summary>

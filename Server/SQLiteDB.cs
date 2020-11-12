@@ -147,7 +147,6 @@ namespace Server
             try
             {
                 ClearTable.ExecuteNonQuery();
-                Program.ConsoleWrite("Процесс отчистки словаря был завершен!", 1);
             }
             catch(Exception e)
             {

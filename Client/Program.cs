@@ -20,6 +20,7 @@ namespace Client
             {
                 // Подключаемся к указанному в параметрах серверу
                 _Client.Connect(args[0], int.Parse(args[1]));
+                Console.Clear();
             }
             catch(Exception e)
             {

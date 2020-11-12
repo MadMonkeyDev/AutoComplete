@@ -59,6 +59,7 @@ namespace Client
 
         public string RecieveResponce()
         {
+            string ResponcePrefix = "resp:";
             var Buffer = new byte[BUFFER_SIZE];
             int Recieved = _ClientSocket.Receive(Buffer, SocketFlags.None);
 
@@ -67,7 +68,7 @@ namespace Client
             byte[] Data = new byte[Recieved];
             Array.Copy(Buffer, Data, Recieved);
 
-            return _Encoder.GetString(Data);
+            return (_Encoder.GetString(Data)).Remove(0, ResponcePrefix.Length);
         }
 
         public void Disconnect()

@@ -94,6 +94,7 @@ namespace Server
                     case "clear-dict":
                         ConsoleWrite("Отчистка текущего словаря...", 1);
                         SQLiteDB.Instance.ClearDictionary();
+                        ConsoleWrite("Словарь отчищен!", 1);
                         break;
                     default:
                         Console.Write(SQLiteDB.Instance.GetWords(CommandWithArgs[0]));
@@ -123,8 +124,6 @@ namespace Server
                         group word by word into grp
                         where grp.Count() >= 3
                         select new { grp.Key, Count = grp.Count() };
-
-            Program.ConsoleWrite($"Файл прочитан, всего слов найдено удовлетворяющий условиям - {Words.Count()}. Заносим в базу данных...", 1);
 
             foreach (var Word in Words)
             {
