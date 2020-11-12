@@ -62,6 +62,7 @@ namespace Server
             catch (Exception e)
             {
                 ConsoleWrite($"Ошибка! {e.Message}", 3);
+                ConsoleWrite("Проверьте параметры запуска сервера!", 3);
                 ExitStatus = true;
             }
 
